@@ -14,5 +14,7 @@ function proto.opkg_package(self)
 	return "minieap"
 end
 
-netmod:register_error_code("MISSING_USER_OR_PASS", luci.i18n.translate("Missing username or password"))
-netmod:register_error_code("EXIT_FAILURE", luci.i18n.translate("Program exited with failure. See system log for more information."))
+if netmod["register_error_code"] then
+	netmod:register_error_code("MISSING_USER_OR_PASS", luci.i18n.translate("Missing username or password"))
+	netmod:register_error_code("EXIT_FAILURE", luci.i18n.translate("Program exited with failure. See system log for more information."))
+end
