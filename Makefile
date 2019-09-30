@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-proto-minieap
-PKG_VERSION:=1.1
+PKG_VERSION:=2.1
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Richard Yu <yurichard3839@gmail.com>
 PKG_LICENSE:=GPLv3
