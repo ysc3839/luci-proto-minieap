@@ -83,7 +83,7 @@ return network.registerProtocol('minieap', {
 		o.placeholder = 'internet';
 
 		o = s.taboption('rjv3', form.Value, 'version_str', _('Version string'));
-		o.placeholder = 'RG-SU For Linux V1.0';
+		o.placeholder = 'RG-SU For Linux V1.30';
 
 		o = s.taboption('rjv3', form.Value, 'dhcp_script', _('DHCP script'));
 
