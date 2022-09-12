@@ -83,7 +83,7 @@ o = section:taboption("rjv3", Value, "service", translate("Service name"))
 o.placeholder = "internet"
 
 o = section:taboption("rjv3", Value, "version_str", translate("Version string"))
-o.placeholder = "RG-SU For Linux V1.0"
+o.placeholder = "RG-SU For Linux V1.30"
 
 o = section:taboption("rjv3", Value, "dhcp_script", translate("DHCP script"))
 
