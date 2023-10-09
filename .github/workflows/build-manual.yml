@@ -1,0 +1,47 @@
+name: Manual Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      arch:
+        description: "Target architecture"
+        required: true
+        default: x86_64
+
+      sdk_version:
+        type: choice
+        description: "SDK version"
+        options:
+          - SNAPSHOT
+          - openwrt-23.05
+          - openwrt-22.03
+        required: true
+        default: SNAPSHOT
+env:
+  PACKAGE_NAME: luci-proto-minieap
+
+jobs:
+  build:
+    name: Build ${{ github.event.inputs.arch }}-${{ github.event.inputs.sdk_version }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: luci-proto-minieap
+
+      - name: Building packages
+        uses: openwrt/gh-action-sdk@main
+        env:
+          ARCH: ${{ github.event.inputs.arch }}-${{ github.event.inputs.sdk_version }}
+          FEED_DIR: ${{ github.workspace }}
+          PACKAGES: ${{ env.PACKAGE_NAME }}
+          NO_REFRESH_CHECK: true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.inputs.arch }}-${{ github.event.inputs.sdk_version }}
+          path: bin/packages/${{ github.event.inputs.arch }}/action/*.ipk
+          retention-days: 7
